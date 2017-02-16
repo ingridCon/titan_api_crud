@@ -1,0 +1,1646 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /acta_inicio/:
+    get:
+      tags:
+      - acta_inicio
+      description: get ActaInicio
+      operationId: ActaInicioController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ActaInicio'
+        "403": {}
+    post:
+      tags:
+      - acta_inicio
+      description: create ActaInicio
+      operationId: ActaInicioController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ActaInicio content
+        required: true
+        schema:
+          $ref: '#/definitions/.ActaInicio'
+      responses:
+        "201":
+          description: '{int} models.ActaInicio'
+        "403":
+          description: body is empty
+  /acta_inicio/{id}:
+    get:
+      tags:
+      - acta_inicio
+      description: get ActaInicio by id
+      operationId: ActaInicioController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ActaInicio'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - acta_inicio
+      description: update the ActaInicio
+      operationId: ActaInicioController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ActaInicio content
+        required: true
+        schema:
+          $ref: '#/definitions/.ActaInicio'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ActaInicio'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - acta_inicio
+      description: delete the ActaInicio
+      operationId: ActaInicioController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /argo_ordenadores/:
+    get:
+      tags:
+      - argo_ordenadores
+      description: get ArgoOrdenadores
+      operationId: ArgoOrdenadoresController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ArgoOrdenadores'
+        "403": {}
+    post:
+      tags:
+      - argo_ordenadores
+      description: create ArgoOrdenadores
+      operationId: ArgoOrdenadoresController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ArgoOrdenadores content
+        required: true
+        schema:
+          $ref: '#/definitions/.ArgoOrdenadores'
+      responses:
+        "201":
+          description: '{int} models.ArgoOrdenadores'
+        "403":
+          description: body is empty
+  /argo_ordenadores/{id}:
+    get:
+      tags:
+      - argo_ordenadores
+      description: get ArgoOrdenadores by id
+      operationId: ArgoOrdenadoresController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ArgoOrdenadores'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - argo_ordenadores
+      description: update the ArgoOrdenadores
+      operationId: ArgoOrdenadoresController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ArgoOrdenadores content
+        required: true
+        schema:
+          $ref: '#/definitions/.ArgoOrdenadores'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ArgoOrdenadores'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - argo_ordenadores
+      description: delete the ArgoOrdenadores
+      operationId: ArgoOrdenadoresController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /ciudad/:
+    get:
+      tags:
+      - ciudad
+      description: get Ciudad
+      operationId: CiudadController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Ciudad'
+        "403": {}
+    post:
+      tags:
+      - ciudad
+      description: create Ciudad
+      operationId: CiudadController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Ciudad content
+        required: true
+        schema:
+          $ref: '#/definitions/.Ciudad'
+      responses:
+        "201":
+          description: '{int} models.Ciudad'
+        "403":
+          description: body is empty
+  /ciudad/{id}:
+    get:
+      tags:
+      - ciudad
+      description: get Ciudad by id
+      operationId: CiudadController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Ciudad'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - ciudad
+      description: update the Ciudad
+      operationId: CiudadController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Ciudad content
+        required: true
+        schema:
+          $ref: '#/definitions/.Ciudad'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Ciudad'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - ciudad
+      description: delete the Ciudad
+      operationId: CiudadController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /contrato_general/:
+    get:
+      tags:
+      - contrato_general
+      description: get ContratoGeneral
+      operationId: ContratoGeneralController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ContratoGeneral'
+        "403": {}
+    post:
+      tags:
+      - contrato_general
+      description: create ContratoGeneral
+      operationId: ContratoGeneralController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ContratoGeneral content
+        required: true
+        schema:
+          $ref: '#/definitions/.ContratoGeneral'
+      responses:
+        "201":
+          description: '{int} models.ContratoGeneral'
+        "403":
+          description: body is empty
+  /contrato_general/{id}:
+    get:
+      tags:
+      - contrato_general
+      description: get ContratoGeneral by id
+      operationId: ContratoGeneralController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ContratoGeneral'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - contrato_general
+      description: update the ContratoGeneral
+      operationId: ContratoGeneralController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ContratoGeneral content
+        required: true
+        schema:
+          $ref: '#/definitions/.ContratoGeneral'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ContratoGeneral'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - contrato_general
+      description: delete the ContratoGeneral
+      operationId: ContratoGeneralController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /departamento/:
+    get:
+      tags:
+      - departamento
+      description: get Departamento
+      operationId: DepartamentoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Departamento'
+        "403": {}
+    post:
+      tags:
+      - departamento
+      description: create Departamento
+      operationId: DepartamentoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Departamento content
+        required: true
+        schema:
+          $ref: '#/definitions/.Departamento'
+      responses:
+        "201":
+          description: '{int} models.Departamento'
+        "403":
+          description: body is empty
+  /departamento/{id}:
+    get:
+      tags:
+      - departamento
+      description: get Departamento by id
+      operationId: DepartamentoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Departamento'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - departamento
+      description: update the Departamento
+      operationId: DepartamentoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Departamento content
+        required: true
+        schema:
+          $ref: '#/definitions/.Departamento'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Departamento'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - departamento
+      description: delete the Departamento
+      operationId: DepartamentoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /informacion_proveedor/:
+    get:
+      tags:
+      - informacion_proveedor
+      description: get InformacionProveedor
+      operationId: InformacionProveedorController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.InformacionProveedor'
+        "403": {}
+    post:
+      tags:
+      - informacion_proveedor
+      description: create InformacionProveedor
+      operationId: InformacionProveedorController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for InformacionProveedor content
+        required: true
+        schema:
+          $ref: '#/definitions/.InformacionProveedor'
+      responses:
+        "201":
+          description: '{int} models.InformacionProveedor'
+        "403":
+          description: body is empty
+  /informacion_proveedor/{id}:
+    get:
+      tags:
+      - informacion_proveedor
+      description: get InformacionProveedor by id
+      operationId: InformacionProveedorController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.InformacionProveedor'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - informacion_proveedor
+      description: update the InformacionProveedor
+      operationId: InformacionProveedorController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for InformacionProveedor content
+        required: true
+        schema:
+          $ref: '#/definitions/.InformacionProveedor'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.InformacionProveedor'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - informacion_proveedor
+      description: delete the InformacionProveedor
+      operationId: InformacionProveedorController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /lugar_ejecucion/:
+    get:
+      tags:
+      - lugar_ejecucion
+      description: get LugarEjecucion
+      operationId: LugarEjecucionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.LugarEjecucion'
+        "403": {}
+    post:
+      tags:
+      - lugar_ejecucion
+      description: create LugarEjecucion
+      operationId: LugarEjecucionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for LugarEjecucion content
+        required: true
+        schema:
+          $ref: '#/definitions/.LugarEjecucion'
+      responses:
+        "201":
+          description: '{int} models.LugarEjecucion'
+        "403":
+          description: body is empty
+  /lugar_ejecucion/{id}:
+    get:
+      tags:
+      - lugar_ejecucion
+      description: get LugarEjecucion by id
+      operationId: LugarEjecucionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.LugarEjecucion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - lugar_ejecucion
+      description: update the LugarEjecucion
+      operationId: LugarEjecucionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for LugarEjecucion content
+        required: true
+        schema:
+          $ref: '#/definitions/.LugarEjecucion'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.LugarEjecucion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - lugar_ejecucion
+      description: delete the LugarEjecucion
+      operationId: LugarEjecucionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /pais/:
+    get:
+      tags:
+      - pais
+      description: get Pais
+      operationId: PaisController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Pais'
+        "403": {}
+    post:
+      tags:
+      - pais
+      description: create Pais
+      operationId: PaisController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Pais content
+        required: true
+        schema:
+          $ref: '#/definitions/.Pais'
+      responses:
+        "201":
+          description: '{int} models.Pais'
+        "403":
+          description: body is empty
+  /pais/{id}:
+    get:
+      tags:
+      - pais
+      description: get Pais by id
+      operationId: PaisController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Pais'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - pais
+      description: update the Pais
+      operationId: PaisController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Pais content
+        required: true
+        schema:
+          $ref: '#/definitions/.Pais'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Pais'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - pais
+      description: delete the Pais
+      operationId: PaisController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /parametro_estandar/:
+    get:
+      tags:
+      - parametro_estandar
+      description: get ParametroEstandar
+      operationId: ParametroEstandarController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ParametroEstandar'
+        "403": {}
+    post:
+      tags:
+      - parametro_estandar
+      description: create ParametroEstandar
+      operationId: ParametroEstandarController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ParametroEstandar content
+        required: true
+        schema:
+          $ref: '#/definitions/.ParametroEstandar'
+      responses:
+        "201":
+          description: '{int} models.ParametroEstandar'
+        "403":
+          description: body is empty
+  /parametro_estandar/{id}:
+    get:
+      tags:
+      - parametro_estandar
+      description: get ParametroEstandar by id
+      operationId: ParametroEstandarController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ParametroEstandar'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - parametro_estandar
+      description: update the ParametroEstandar
+      operationId: ParametroEstandarController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ParametroEstandar content
+        required: true
+        schema:
+          $ref: '#/definitions/.ParametroEstandar'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.ParametroEstandar'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - parametro_estandar
+      description: delete the ParametroEstandar
+      operationId: ParametroEstandarController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /parametros/:
+    get:
+      tags:
+      - parametros
+      description: get Parametros
+      operationId: ParametrosController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Parametros'
+        "403": {}
+    post:
+      tags:
+      - parametros
+      description: create Parametros
+      operationId: ParametrosController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Parametros content
+        required: true
+        schema:
+          $ref: '#/definitions/.Parametros'
+      responses:
+        "201":
+          description: '{int} models.Parametros'
+        "403":
+          description: body is empty
+  /parametros/{id}:
+    get:
+      tags:
+      - parametros
+      description: get Parametros by id
+      operationId: ParametrosController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Parametros'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - parametros
+      description: update the Parametros
+      operationId: ParametrosController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Parametros content
+        required: true
+        schema:
+          $ref: '#/definitions/.Parametros'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.Parametros'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - parametros
+      description: delete the Parametros
+      operationId: ParametrosController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /relacion_parametro/:
+    get:
+      tags:
+      - relacion_parametro
+      description: get RelacionParametro
+      operationId: RelacionParametroController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.RelacionParametro'
+        "403": {}
+    post:
+      tags:
+      - relacion_parametro
+      description: create RelacionParametro
+      operationId: RelacionParametroController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for RelacionParametro content
+        required: true
+        schema:
+          $ref: '#/definitions/.RelacionParametro'
+      responses:
+        "201":
+          description: '{int} models.RelacionParametro'
+        "403":
+          description: body is empty
+  /relacion_parametro/{id}:
+    get:
+      tags:
+      - relacion_parametro
+      description: get RelacionParametro by id
+      operationId: RelacionParametroController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.RelacionParametro'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - relacion_parametro
+      description: update the RelacionParametro
+      operationId: RelacionParametroController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for RelacionParametro content
+        required: true
+        schema:
+          $ref: '#/definitions/.RelacionParametro'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.RelacionParametro'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - relacion_parametro
+      description: delete the RelacionParametro
+      operationId: RelacionParametroController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /supervisor_contrato/:
+    get:
+      tags:
+      - supervisor_contrato
+      description: get SupervisorContrato
+      operationId: SupervisorContratoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.SupervisorContrato'
+        "403": {}
+    post:
+      tags:
+      - supervisor_contrato
+      description: create SupervisorContrato
+      operationId: SupervisorContratoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for SupervisorContrato content
+        required: true
+        schema:
+          $ref: '#/definitions/.SupervisorContrato'
+      responses:
+        "201":
+          description: '{int} models.SupervisorContrato'
+        "403":
+          description: body is empty
+  /supervisor_contrato/{id}:
+    get:
+      tags:
+      - supervisor_contrato
+      description: get SupervisorContrato by id
+      operationId: SupervisorContratoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.SupervisorContrato'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - supervisor_contrato
+      description: update the SupervisorContrato
+      operationId: SupervisorContratoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for SupervisorContrato content
+        required: true
+        schema:
+          $ref: '#/definitions/.SupervisorContrato'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.SupervisorContrato'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - supervisor_contrato
+      description: delete the SupervisorContrato
+      operationId: SupervisorContratoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /tipo_contrato/:
+    get:
+      tags:
+      - tipo_contrato
+      description: get TipoContrato
+      operationId: TipoContratoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.TipoContrato'
+        "403": {}
+    post:
+      tags:
+      - tipo_contrato
+      description: create TipoContrato
+      operationId: TipoContratoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoContrato content
+        required: true
+        schema:
+          $ref: '#/definitions/.TipoContrato'
+      responses:
+        "201":
+          description: '{int} models.TipoContrato'
+        "403":
+          description: body is empty
+  /tipo_contrato/{id}:
+    get:
+      tags:
+      - tipo_contrato
+      description: get TipoContrato by id
+      operationId: TipoContratoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.TipoContrato'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_contrato
+      description: update the TipoContrato
+      operationId: TipoContratoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoContrato content
+        required: true
+        schema:
+          $ref: '#/definitions/.TipoContrato'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.TipoContrato'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_contrato
+      description: delete the TipoContrato
+      operationId: TipoContratoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /unidad_ejecutora/:
+    get:
+      tags:
+      - unidad_ejecutora
+      description: get UnidadEjecutora
+      operationId: UnidadEjecutoraController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.UnidadEjecutora'
+        "403": {}
+    post:
+      tags:
+      - unidad_ejecutora
+      description: create UnidadEjecutora
+      operationId: UnidadEjecutoraController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for UnidadEjecutora content
+        required: true
+        schema:
+          $ref: '#/definitions/.UnidadEjecutora'
+      responses:
+        "201":
+          description: '{int} models.UnidadEjecutora'
+        "403":
+          description: body is empty
+  /unidad_ejecutora/{id}:
+    get:
+      tags:
+      - unidad_ejecutora
+      description: get UnidadEjecutora by id
+      operationId: UnidadEjecutoraController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.UnidadEjecutora'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - unidad_ejecutora
+      description: update the UnidadEjecutora
+      operationId: UnidadEjecutoraController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for UnidadEjecutora content
+        required: true
+        schema:
+          $ref: '#/definitions/.UnidadEjecutora'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/.UnidadEjecutora'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - unidad_ejecutora
+      description: delete the UnidadEjecutora
+      operationId: UnidadEjecutoraController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  .ActaInicio:
+    type: object
+  .ArgoOrdenadores:
+    type: object
+  .Ciudad:
+    type: object
+  .ContratoGeneral:
+    type: object
+  .Departamento:
+    type: object
+  .InformacionProveedor:
+    type: object
+  .LugarEjecucion:
+    type: object
+  .Object:
+    type: object
+  .Pais:
+    type: object
+  .ParametroEstandar:
+    type: object
+  .Parametros:
+    type: object
+  .RelacionParametro:
+    type: object
+  .SupervisorContrato:
+    type: object
+  .TipoContrato:
+    type: object
+  .UnidadEjecutora:
+    type: object
+  .User:
+    type: object
+tags:
+- name: acta_inicio
+  description: |
+    ActaInicioController operations for ActaInicio
+- name: parametro_estandar
+  description: |
+    ParametroEstandarController operations for ParametroEstandar
+- name: contrato_general
+  description: |
+    ContratoGeneralController operations for ContratoGeneral
+- name: argo_ordenadores
+  description: |
+    ArgoOrdenadoresController operations for ArgoOrdenadores
+- name: relacion_parametro
+  description: |
+    RelacionParametroController operations for RelacionParametro
+- name: unidad_ejecutora
+  description: |
+    UnidadEjecutoraController operations for UnidadEjecutora
+- name: tipo_contrato
+  description: |
+    TipoContratoController operations for TipoContrato
+- name: departamento
+  description: |
+    DepartamentoController operations for Departamento
+- name: unidad_ejecutora
+  description: |
+    UnidadEjecutoraController operations for UnidadEjecutora
+- name: pais
+  description: |
+    PaisController operations for Pais
+- name: informacion_proveedor
+  description: |
+    InformacionProveedorController operations for InformacionProveedor
+- name: lugar_ejecucion
+  description: |
+    LugarEjecucionController operations for LugarEjecucion
+- name: ciudad
+  description: |
+    CiudadController operations for Ciudad
+- name: parametros
+  description: |
+    ParametrosController operations for Parametros
+- name: supervisor_contrato
+  description: |
+    SupervisorContratoController operations for SupervisorContrato
