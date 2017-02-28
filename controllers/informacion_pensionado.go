@@ -28,5 +28,4 @@ func (c *InformacionPensionadoController) Pensionado_datos() {
 		fmt.Println("error 2: ", err)
 	}
 	c.ServeJSON()
-
 }

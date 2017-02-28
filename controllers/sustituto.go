@@ -5,6 +5,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+	"fmt"
 "titan_api_crud/models"
 	"github.com/astaxie/beego"
 )
@@ -16,13 +17,23 @@ type SustitutoController struct {
 
 // URLMapping ...
 func (c *SustitutoController) URLMapping() {
-	c.Mapping("Post", c.Post)
-	c.Mapping("GetOne", c.GetOne)
-	c.Mapping("GetAll", c.GetAll)
-	c.Mapping("Put", c.Put)
-	c.Mapping("Delete", c.Delete)
+	c.Mapping("SustitutoDatos", c.Sustituto_datos)
 }
 
+func (c *SustitutoController) Sustituto_datos() {
+	var v int
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		fmt.Println("ASFDDHGFH")
+		respuesta := models.GetSustituto(v)
+		fmt.Println(respuesta)
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = respuesta
+	} else {
+		c.Data["json"] = err.Error()
+		fmt.Println("error 2: ", err)
+	}
+	c.ServeJSON()
+}
 // Post ...
 // @Title Post
 // @Description create Sustituto

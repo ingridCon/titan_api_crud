@@ -17,12 +17,20 @@ type Funcionario_x_Pensionado struct {
 	Id              int    `orm:"column(informacion_proveedor)"`
 	NombreProveedor string `orm:"column(nom_proveedor)"`
 	NumDocumento    int    `orm:"column(num_documento)"`
+	NumeroContrato  string  `orm:"column(numero_contrato)"`
 }
 
 type Funcionario_x_Beneficiario struct {
 	Id              int    `orm:"column(id)"`
 	InformacionProveedor int `orm:"column(informacion_proveedor)"`
 	InformacionPensionado    int    `orm:"column(informacion_pensionado)"`
+}
+
+type Funcionario_x_Sustituto struct {
+	Id              int    `orm:"column(informacion_proveedor)"`
+	NombreProveedor string `orm:"column(nom_proveedor)"`
+	NumDocumento    int    `orm:"column(num_documento)"`
+	NumeroContrato  string  `orm:"column(numero_contrato)"`
 }
 
 func init() {
@@ -56,13 +64,23 @@ func GetIdProveedorXDocente() (arregloIDs []Funcionario_x_Proveedor) {
 func GetIdPensionado() (arregloIDs []Funcionario_x_Pensionado) {
 	o := orm.NewOrm()
 	var temp []Funcionario_x_Pensionado
-	_, err := o.Raw("SELECT pensionado.informacion_proveedor, informacionproveedor.num_documento, informacionProveedor.nom_proveedor FROM personal.informacion_persona_pensionado AS pensionado, agora.informacion_proveedor AS informacionProveedor WHERE pensionado.informacion_proveedor = informacionproveedor.id_proveedor").QueryRows(&temp)
+	_, err := o.Raw("SELECT pensionado.informacion_proveedor, informacionproveedor.num_documento, informacionProveedor.nom_proveedor,contratos.numero_contrato,contratos.contratista FROM personal.informacion_persona_pensionado AS pensionado, agora.informacion_proveedor AS informacionProveedor,argo.contrato_general AS contratos WHERE contratos.objeto_contrato = 'Pensionado' AND pensionado.informacion_proveedor = informacionproveedor.id_proveedor AND contratos.contratista = informacionproveedor.num_documento").QueryRows(&temp)
 	if err == nil {
 		fmt.Println("Consulta exitosa")
 	}
 	return temp
 }
 
+func GetIdSustituto() (arregloIDs []Funcionario_x_Proveedor) {
+	o := orm.NewOrm()
+	var temp []Funcionario_x_Proveedor
+_, err := o.Raw("SELECT beneficiario.informacion_proveedor, informacionproveedor.num_documento, informacionProveedor.nom_proveedor,contratos.numero_contrato,contratos.contratista FROM personal.sustituto AS sustituto,personal.beneficiarios AS beneficiario,agora.informacion_proveedor AS informacionProveedor,argo.contrato_general AS contratos WHERE contratos.objeto_contrato = 'SustPensionado' AND sustituto.beneficiario = beneficiario.id AND beneficiario.informacion_proveedor = informacionproveedor.id_proveedor AND contratos.contratista = informacionproveedor.num_documento").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+	return temp
+}
+/*
 func GetIdBeneficiario() (arregloIDs []Funcionario_x_Beneficiario) {
 	o := orm.NewOrm()
 	var temp []Funcionario_x_Beneficiario
@@ -71,17 +89,9 @@ func GetIdBeneficiario() (arregloIDs []Funcionario_x_Beneficiario) {
 		fmt.Println("Consulta exitosa")
 	}
 	return temp
-}
-
-/*func GetIdSustituto() (arregloIDs []Funcionario_x_Pensionado) {
-	o := orm.NewOrm()
-	var temp []Funcionario_x_Pensionado
-	_, err := o.Raw("SELECT pensionado.informacion_proveedor, informacionproveedor.num_documento FROM personal.informacion_persona_pensionado AS pensionado, agora.informacion_proveedor AS informacionProveedor WHERE pensionado.informacion_proveedor = informacionproveedor.id_proveedor").QueryRows(&temp)
-	if err == nil {
-		fmt.Println("Consulta exitosa")
-	}
-	return temp
 }*/
+
+
 
 func ListaContratos(v *Preliquidacion) (datos []Funcionario_x_Proveedor, err error) {
 	o := orm.NewOrm()

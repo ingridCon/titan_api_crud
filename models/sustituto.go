@@ -5,15 +5,18 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"strconv"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type Sustituto struct {
 	Id                              int           `orm:"column(id);pk"`
-	ParentescoInformacionPensionado int           `orm:"column(parentesco_informacion_pensionado)"`
-//	BeneficiarioSustituto           *Beneficiario `orm:"column(beneficiario_sustituto);rel(fk)"`
+	Proveedor												int						`orm:"column(informacion_proveedor)"`
+	Beneficiario           				int 					`orm:"column(beneficiario)"`
+	Porcentaje										int					`orm:"column(porcentaje)"`
 	Estado                          string        `orm:"column(estado);null"`
+	NumeroContrato								string						`orm:"column(numero_contrato);null"`
 }
 
 func (t *Sustituto) TableName() string {
@@ -32,6 +35,19 @@ func AddSustituto(m *Sustituto) (id int64, err error) {
 	return
 }
 
+func GetSustituto( idProveedorString int) (v []Sustituto) {
+	o := orm.NewOrm()
+	var temp [] Sustituto
+	id_proveedor := strconv.Itoa(idProveedorString)
+	_, err := o.Raw("SELECT beneficiario.informacion_proveedor,sustituto.beneficiario,sustituto.porcentaje,sustituto.estado,contrato.numero_contrato  FROM personal.sustituto AS sustituto, personal.beneficiarios AS beneficiario, personal.informacion_persona_pensionado AS pensionado, agora.informacion_proveedor AS informacionProveedor,argo.contrato_general as contrato WHERE sustituto.beneficiario = beneficiario.id  AND beneficiario.informacion_proveedor = informacionProveedor.id_proveedor AND beneficiario.informacion_pensionado = pensionado.informacion_proveedor AND informacionProveedor.num_documento = contrato.contratista AND beneficiario.informacion_pensionado =" +id_proveedor).QueryRows(&temp)
+  //_, err := o.Raw("SELECT beneficiario.informacion_proveedor, informacionProveedor.num_documento, informacionProveedor.nom_proveedor, beneficiario.categoria_beneficiario FROM personal.beneficiario AS beneficiario, agora.informacion_proveedor AS informacionProveedor, personal.sustituto AS sustituto WHERE sustituto.beneficiario = beneficiario.id AND beneficiario.id = " + "346" +"AND beneficiario.informacion_proveedor = informacionproveedor.id_proveedor").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+	fmt.Println("?=)=?=)(/&)")
+	fmt.Println(temp[0].Beneficiario)
+	return temp
+}
 // GetSustitutoById retrieves Sustituto by Id. Returns error if
 // Id doesn't exist
 func GetSustitutoById(id int) (v *Sustituto, err error) {
