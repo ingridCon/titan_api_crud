@@ -18,6 +18,7 @@ type SustitutoController struct {
 // URLMapping ...
 func (c *SustitutoController) URLMapping() {
 	c.Mapping("SustitutoDatos", c.Sustituto_datos)
+	c.Mapping("TutorDatos", c.Tutor_datos)
 }
 
 func (c *SustitutoController) Sustituto_datos() {
@@ -25,6 +26,21 @@ func (c *SustitutoController) Sustituto_datos() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		fmt.Println("ASFDDHGFH")
 		respuesta := models.GetSustituto(v)
+		fmt.Println(respuesta)
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = respuesta
+	} else {
+		c.Data["json"] = err.Error()
+		fmt.Println("error 2: ", err)
+	}
+	c.ServeJSON()
+}
+
+func (c *SustitutoController) Tutor_datos() {
+	var v int
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		fmt.Println("ASFDDHGFH")
+		respuesta := models.GetTutorSustituto(v)
 		fmt.Println(respuesta)
 		c.Ctx.Output.SetStatus(201)
 		c.Data["json"] = respuesta

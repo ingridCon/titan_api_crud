@@ -11,14 +11,7 @@ func init() {
 			Router: `/beneficiarioDatos`,
 			AllowHTTPMethods: []string{"post"},
 			Params: nil})
-/*
-		beego.GlobalControllerRouter["titan_api_crud/controllers:BeneficiariosController"] = append(beego.GlobalControllerRouter["titan_api_crud/controllers:BeneficiariosController"],
-			beego.ControllerComments{
-				Method: "BeneficiarioInformacion",
-				Router: `/beneficiarioInformacion`,
-				AllowHTTPMethods: []string{"post"},
-				Params: nil})
-*/
+
 	beego.GlobalControllerRouter["titan_api_crud/controllers:FuncionarioProveedorController"] = append(beego.GlobalControllerRouter["github.com/miguelramirez93/titan_api_crud/controllers:FuncionarioProveedorController"],
 		beego.ControllerComments{
 			Method: "ConsultarIDProveedor",
@@ -69,5 +62,12 @@ func init() {
 						Router: `/sustitutoDatos`,
 						AllowHTTPMethods: []string{"post"},
 						Params: nil})
+
+					beego.GlobalControllerRouter["titan_api_crud/controllers:SustitutoController"] = append(beego.GlobalControllerRouter["titan_api_crud/controllers:SustitutoController"],
+						beego.ControllerComments{
+							Method: "Tutor_datos",
+							Router: `/tutorDatos`,
+							AllowHTTPMethods: []string{"post"},
+							Params: nil})
 
 }
