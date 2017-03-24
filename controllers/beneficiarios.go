@@ -6,6 +6,7 @@ import (
 "titan_api_crud/models"
 	"github.com/astaxie/beego"
 	"fmt"
+
 )
 
 // BeneficiarioController operations for Beneficiario
@@ -29,7 +30,7 @@ func (c *BeneficiariosController) URLMapping() {
 
 
 func (c *BeneficiariosController) BeneficiarioDatos() {
-	var v string
+	var v int
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		respuesta := models.GetnumBeneficiario_x_pensionado(v)
 		c.Ctx.Output.SetStatus(201)

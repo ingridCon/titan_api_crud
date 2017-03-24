@@ -25,6 +25,7 @@ type InformacionPensionado struct {
 	FechaPension         time.Time             `orm:"column(fecha_pension);type(date);null"`
 	Resolucion           *Resolucion           `orm:"column(resolucion);rel(fk)"`
 	EstadoPension        string                `orm:"column(estado_pension);null"`
+	EnBeneficiario			 int									 `orm:"column(informacion_pensionado);null"`
 }
 
 func (t *InformacionPensionado) TableName() string {
@@ -55,7 +56,6 @@ func GetPensionado( idProveedorString int) (v []InformacionPensionado) {
 	}
 	return temp
 }
-
 
 // GetAllInformacionPensionado retrieves all InformacionPensionado matches certain condition. Returns empty list if
 // no records exist

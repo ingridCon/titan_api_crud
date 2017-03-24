@@ -54,7 +54,7 @@ func init() {
 					Method: "Pensionado_datos",
 					Router: `/`,
 					AllowHTTPMethods: []string{"post"},
-					Params: nil})
+					Params: nil})			
 
 				beego.GlobalControllerRouter["titan_api_crud/controllers:SustitutoController"] = append(beego.GlobalControllerRouter["titan_api_crud/controllers:SustitutoController"],
 					beego.ControllerComments{

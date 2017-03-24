@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	//"strconv"
+	"strconv"
 	"time"
 	"github.com/astaxie/beego/orm"
 )
@@ -13,13 +13,17 @@ import (
 type Beneficiarios struct {
 	Id                    int                    `orm:"column(id);pk"`
 	InformacionPensionado int                    `orm:"column(informacion_pensionado);null"`
-	InformacionProveedor  int  `orm:"column(informacion_proveedor);"`
+	InformacionProveedor  int  									`orm:"column(informacion_proveedor);"`
 	FechaNacBeneficiario  time.Time              `orm:"column(fecha_nac_beneficiario);type(date);null"`
 	Tutor                 int                    `orm:"column(tutor);null"`
 	SubFamiliar           string                 `orm:"column(sub_familiar);null"`
-	CategoriaBeneficiario int `orm:"column(categoria_beneficiario);"`
-	SubEstudios           string                 `orm:"column(sub_estudios);null"`
+	CategoriaBeneficiario int 										`orm:"column(categoria_beneficiario);"`
+	SubEstudios           string                 `orm:"column(aux_estudio);null"`
 }
+
+/*type numero_beneficiarios struct {
+	numero  int `orm:"column(informacion_pensionado)"`
+}*/
 
 func (t *Beneficiarios) TableName() string {
 	return "beneficiarios"
@@ -39,18 +43,23 @@ func AddBeneficiario(m *Beneficiarios) (id int64, err error) {
 
 // GetBeneficiarioById retrieves Beneficiario by Id. Returns error if
 // Id doesn't exist
-func GetnumBeneficiario_x_pensionado(idProveedorString string) (personas string) {
+func GetnumBeneficiario_x_pensionado(idProveedorString int) (personas []Beneficiarios) {
 	o := orm.NewOrm()
-	var temp []string
+	var temp [] Beneficiarios
 	fmt.Println(idProveedorString)
-	//id_proveedor := strconv.Itoa(idProveedorString)
+	id_proveedor := strconv.Itoa(idProveedorString)
 	//_, err := o.Raw("SELECT count(beneficiario.informacion_pensionado) FROM personal.beneficiario AS beneficiario").QueryRows(&temp)
-	_, err := o.Raw("SELECT COUNT(beneficiario.informacion_pensionado) FROM personal.beneficiarios AS beneficiario, personal.informacion_persona_pensionado AS pensionado WHERE pensionado.informacion_proveedor = beneficiario.informacion_pensionado AND pensionado.informacion_proveedor = "+ idProveedorString + "GROUP BY beneficiario.informacion_pensionado").QueryRows(&temp)
+	_, err := o.Raw("SELECT ben.informacion_proveedor,ben.categoria_beneficiario,ben.sub_familiar,ben.aux_estudio FROM personal.beneficiarios AS ben, personal.informacion_persona_pensionado AS pen WHERE pen.informacion_proveedor = ben.informacion_pensionado AND ben.informacion_pensionado = " +id_proveedor).QueryRows(&temp)
+	//if len(temp) == 0{
+		//temp = append(temp,"0")
+	//}
 	if err == nil {
 		fmt.Println("Consulta exitosa")
 	}
-	return temp[0]	
+	fmt.Println("Teeeeeeeeeeeemp")
+return temp
 }
+
 /*
 func GetBeneficiarioDatos(idProveedorString int) (v []Beneficiarios) {
 	o := orm.NewOrm()

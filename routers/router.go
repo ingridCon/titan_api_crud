@@ -207,7 +207,7 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/beneficiario",
+		beego.NSNamespace("/beneficiarios",
 			beego.NSInclude(
 				&controllers.BeneficiariosController{},
 			),

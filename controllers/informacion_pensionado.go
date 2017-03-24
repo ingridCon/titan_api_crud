@@ -15,6 +15,7 @@ type InformacionPensionadoController struct {
 // URLMapping ...
 func (c *InformacionPensionadoController) URLMapping() {
 	c.Mapping("Pensionado_datos", c.Pensionado_datos)
+	//c.Mapping("Pensionado_existe", c.Pensionado_existe)
 }
 
 func (c *InformacionPensionadoController) Pensionado_datos() {
