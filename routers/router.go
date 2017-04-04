@@ -155,6 +155,13 @@ func init() {
 		  ),
 		),
 
+		beego.NSNamespace("/banco",
+			beego.NSInclude(
+				&controllers.BancoController{},
+			),
+		),
+
+
 		beego.NSNamespace("/concepto_por_persona",
 		  beego.NSInclude(
 		    &controllers.ConceptoPorPersonaController{},
@@ -228,6 +235,12 @@ func init() {
 		beego.NSNamespace("/resolucion",
 			beego.NSInclude(
 				&controllers.ResolucionController{},
+			),
+		),
+
+		beego.NSNamespace("/informacion_persona_natural",
+			beego.NSInclude(
+				&controllers.InformacionPersonaNaturalController{},
 			),
 		),
 

@@ -19,6 +19,7 @@ type Beneficiarios struct {
 	SubFamiliar           string                 `orm:"column(sub_familiar);null"`
 	CategoriaBeneficiario int 										`orm:"column(categoria_beneficiario);"`
 	SubEstudios           string                 `orm:"column(aux_estudio);null"`
+	Estado								string									`orm:"column(estado);null"`
 }
 
 /*type numero_beneficiarios struct {
@@ -49,7 +50,7 @@ func GetnumBeneficiario_x_pensionado(idProveedorString int) (personas []Benefici
 	fmt.Println(idProveedorString)
 	id_proveedor := strconv.Itoa(idProveedorString)
 	//_, err := o.Raw("SELECT count(beneficiario.informacion_pensionado) FROM personal.beneficiario AS beneficiario").QueryRows(&temp)
-	_, err := o.Raw("SELECT ben.informacion_proveedor,ben.categoria_beneficiario,ben.sub_familiar,ben.aux_estudio FROM personal.beneficiarios AS ben, personal.informacion_persona_pensionado AS pen WHERE pen.informacion_proveedor = ben.informacion_pensionado AND ben.informacion_pensionado = " +id_proveedor).QueryRows(&temp)
+	_, err := o.Raw("SELECT ben.informacion_proveedor,ben.categoria_beneficiario,ben.sub_familiar,ben.aux_estudio, ben.estado FROM personal.beneficiarios AS ben, personal.informacion_persona_pensionado AS pen WHERE pen.informacion_proveedor = ben.informacion_pensionado AND ben.informacion_pensionado = " +id_proveedor).QueryRows(&temp)
 	//if len(temp) == 0{
 		//temp = append(temp,"0")
 	//}
@@ -60,20 +61,14 @@ func GetnumBeneficiario_x_pensionado(idProveedorString int) (personas []Benefici
 return temp
 }
 
-/*
-func GetBeneficiarioDatos(idProveedorString int) (v []Beneficiarios) {
+func GetBeneficiarioById(id int) (v *Beneficiarios, err error) {
 	o := orm.NewOrm()
-	var temp [] Beneficiarios
-	fmt.Println(idProveedorString)
-	id_proveedor := strconv.Itoa(idProveedorString)
-	//_, err := o.Raw("SELECT count(beneficiario.informacion_pensionado) FROM personal.beneficiario AS beneficiario").QueryRows(&temp)
-	_, err := o.Raw("SELECT beneficiario.informacion_pensionado, beneficiario.informacion_proveedor,beneficiario.fecha_nac_beneficiario,beneficiario.categoria_beneficiario FROM personal.beneficiarios AS beneficiario, agora.informacion_proveedor AS informacionproveedor WHERE beneficiario.informacion_proveedor = " + id_proveedor).QueryRows(&temp)
-	if err == nil {
-		fmt.Println("Consulta exitosa")
+	v = &Beneficiarios{Id: id}
+	if err = o.Read(v); err == nil {
+		return v, nil
 	}
-	fmt.Println(temp[0])
-	return temp
-}*/
+	return nil, err
+}
 
 // GetAllBeneficiario retrieves all Beneficiario matches certain condition. Returns empty list if
 // no records exist

@@ -25,7 +25,6 @@ type InformacionPensionado struct {
 	FechaPension         time.Time             `orm:"column(fecha_pension);type(date);null"`
 	Resolucion           *Resolucion           `orm:"column(resolucion);rel(fk)"`
 	EstadoPension        string                `orm:"column(estado_pension);null"`
-	EnBeneficiario			 int									 `orm:"column(informacion_pensionado);null"`
 }
 
 func (t *InformacionPensionado) TableName() string {
@@ -46,11 +45,22 @@ func AddInformacionPensionado(m *InformacionPensionado) (id int64, err error) {
 
 // GetInformacionPensionadoById retrieves InformacionPensionado by Id. Returns error if
 // Id doesn't exist
+func GetInformacionPensionadoById(id int) (v *InformacionPensionado, err error) {
+	o := orm.NewOrm()
+	v = &InformacionPensionado{Id: id}
+	if err = o.Read(v); err == nil {
+		return v, nil
+	}
+	return nil, err
+}
+
+// GetInformacionPensionadoById retrieves InformacionPensionado by Id. Returns error if
+// Id doesn't exist
 func GetPensionado( idProveedorString int) (v []InformacionPensionado) {
 	o := orm.NewOrm()
 	var temp []  InformacionPensionado
 	id_proveedor := strconv.Itoa(idProveedorString)
-	_, err := o.Raw("SELECT informacion_proveedor, valor_pension_asignada, pensionado_en_exterior, persona_fallecido,tipo_pensionado, estado FROM personal.informacion_persona_pensionado WHERE informacion_proveedor ="+id_proveedor).QueryRows(&temp)
+	_, err := o.Raw("SELECT informacion_proveedor, valor_pension_asignada, pensionado_en_exterior, persona_fallecido,tipo_pensionado, estado FROM personal.informacion_pensionado WHERE informacion_proveedor ="+id_proveedor).QueryRows(&temp)
 	if err == nil {
 		fmt.Println("Consulta exitosa")
 	}

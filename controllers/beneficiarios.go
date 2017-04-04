@@ -6,6 +6,9 @@ import (
 "titan_api_crud/models"
 	"github.com/astaxie/beego"
 	"fmt"
+	"strconv"
+	"strings"
+	"errors"
 
 )
 
@@ -16,6 +19,11 @@ type BeneficiariosController struct {
 
 // URLMapping ...
 func (c *BeneficiariosController) URLMapping() {
+	c.Mapping("Post", c.Post)
+	c.Mapping("GetOne", c.GetOne)
+	c.Mapping("GetAll", c.GetAll)
+	c.Mapping("Put", c.Put)
+	c.Mapping("Delete", c.Delete)
 	c.Mapping("BeneficiarioDatos", c.BeneficiarioDatos)
 	//c.Mapping("BeneficiarioInformacion", c.BeneficiarioInformacion)
 }
@@ -77,7 +85,7 @@ func (c *BeneficiariosController) Post() {
 // @Success 200 {object} models.Beneficiario
 // @Failure 403 :id is empty
 // @router /:id [get]
-/*func (c *BeneficiarioController) GetOne() {
+func (c *BeneficiariosController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetBeneficiarioById(id)
@@ -87,7 +95,7 @@ func (c *BeneficiariosController) Post() {
 		c.Data["json"] = v
 	}
 	c.ServeJSON()
-}*/
+}
 
 // GetAll ...
 // @Title Get All
@@ -101,7 +109,7 @@ func (c *BeneficiariosController) Post() {
 // @Success 200 {object} models.Beneficiario
 // @Failure 403
 // @router / [get]
-/*func (c *BeneficiarioController) GetAll() {
+func (c *BeneficiariosController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -160,10 +168,10 @@ func (c *BeneficiariosController) Post() {
 // @Success 200 {object} models.Beneficiario
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *BeneficiarioController) Put() {
+func (c *BeneficiariosController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Beneficiario{Id: id}
+	v := models.Beneficiarios{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateBeneficiarioById(&v); err == nil {
 			c.Data["json"] = "OK"
@@ -183,13 +191,13 @@ func (c *BeneficiarioController) Put() {
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *BeneficiarioController) Delete() {
+func (c *BeneficiariosController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteBeneficiario(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
-	}*/
-	//c.ServeJSON()
-//}
+	}
+	c.ServeJSON()
+}
